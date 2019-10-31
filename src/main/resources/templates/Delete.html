@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h1>住所録：削除</h1>
+	<div th:object="${list_Entity}">
+
+		<label>名前： </label>
+		<p th:text="*{name}"></p>
+		<label>住所：</label>
+		<p th:text="*{address}"></p>
+		<label>電話番号：</label>
+		<p th:text="*{number}"></p>
+
+
+		<div>
+			<form th:action="@{/D{No}(No=*{No})}" th:object="${list_Entity}"
+				th:method="post">
+				<input type=hidden name="name" th:value="*{name}">
+				<input type=hidden name="address" th:value="*{address}">
+				<input type=hidden name="number" th:value="*{number}">
+				<input type=hidden name="Determine" th:value="1">
+				<input type="submit" style="width: 100px" value="削除" class="btn">
+			</form>
+		</div>
+	</div>
+	<form th:action="@{/{No}/back(No=*{No})}" th:method="post">
+		<input type="submit" value="もどる">
+	</form>
+</body>
+</html>

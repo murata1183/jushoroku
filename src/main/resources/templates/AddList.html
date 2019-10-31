@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>住所録一覧</title>
+<meta charset="utf-8" />
+</head>
+<body>
+	<h1>住所録管理システム：住所録一覧</h1>
+	<form action="SignUp" method="post">
+		<input type="submit" value="新規登録" class="btn">
+	</form>
+	<form action="search" method="post">
+		<input type="search" name="Add" placeholder="住所で検索">
+		<input type="submit" value="検索">
+	</form>
+	<table border="1">
+		<thead>
+			<tr height=40 bgcolor=cornflowerblue>
+				<th width=7%>No</th>
+				<th width=16%>名前</th>
+				<th width=46%>住所</th>
+				<th width=20%>電話番号</th>
+				<th colspan="2"></th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="user : ${Addlist}" th:object="${user}">
+				<td class="center" th:text="*{No}"></td>
+				<td th:text="*{name}"></td>
+				<td th:text="*{address}"></td>
+				<td class="center" th:text="*{number}"></td>
+				<td bgcolor="999999"><a th:href="@{/{No}/Edit(No=*{No})}">編集</a></td>
+				<td bgcolor="999999"><a th:href="@{/{No}/Delete(No=*{No})}">削除</a></td>
+
+			</tr>
+		</tbody>
+	</table>
+
+
+	<form action="SignUp" method="post">
+		<input type="submit" value="新規登録" class="btn">
+	</form>
+</body>
+</html>

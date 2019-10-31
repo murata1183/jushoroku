@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>編集：最終確認</title>
+</head>
+<body>
+
+	<div th:object="${list_Entity}">
+
+		<label>名前： </label>
+		<p th:text="*{name}"></p>
+		<label>住所：</label>
+		<p th:text="*{address}"></p>
+		<label>電話番号：</label>
+		<p th:text="*{number}"></p>
+
+	</div>
+
+	<form th:action="@{/E{No}(No=*{No})}" th:object="${list_Entity}"th:method="post">
+		<input type=hidden name="name" th:value="*{name}">
+		<input type=hidden name="address" th:value="*{address}">
+		<input type=hidden name="number" th:value="*{number}">
+		<input type=hidden name="Determine" th:value="0">
+		<input type="submit" style="width: 100px" value="登録" class="btn">
+	</form>
+
+</body>
+</html>
